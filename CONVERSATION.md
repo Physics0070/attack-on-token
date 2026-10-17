@@ -33,4 +33,3 @@ Finally, I told Claude how to work. The judges score features and UI (15%), prom
 - Live site: https://attack-on-token.vercel.app
 - Repo: https://github.com/Physics0070/attack-on-token
 - Full feature list: see [README.md](README.md)
-- Honest gaps: I haven't listened to the audio, haven't played every mechanic by hand, and haven't recorded the demo video yet.
