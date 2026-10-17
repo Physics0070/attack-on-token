@@ -1,0 +1,15 @@
+.boss-intro { max-width: 420px; }
+.boss-intro kbd { border: 1px solid var(--line); padding: 1px 6px; font-size: 12px; }
+.boss-hud { position: fixed; z-index: 70; left: 50%; bottom: 74px; transform: translateX(-50%); width: min(560px, calc(100vw - 24px)); background: rgba(11,9,7,.9); border: 1px solid var(--verm); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; pointer-events: auto; }
+.boss-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.boss-row .boss-bar { flex: 1; margin-left: 10px; }
+.boss-bar { height: 12px; background: rgba(236,228,210,.12); border: 1px solid var(--line); }
+.boss-bar.thin { height: 5px; }
+.boss-bar b { display: block; height: 100%; background: var(--verm); transition: width .25s var(--ease); }
+.boss-bar.thin b { background: var(--brass); }
+.boss-bar b.low { background: var(--acid); animation: pulse .5s infinite alternate; }
+.boss-actions { display: flex; gap: 8px; justify-content: flex-end; }
+@keyframes pulse { to { opacity: .45 } }
+.dmg { position: fixed; z-index: 94; pointer-events: none; font-family: var(--display); font-style: italic; font-size: 38px; color: var(--bone); -webkit-text-stroke: 2px #000; paint-order: stroke fill; transform: translate(-50%, -50%); animation: dmg .9s ease-out forwards; }
+@keyframes dmg { to { transform: translate(-50%, -140px) scale(1.3); opacity: 0 } }
+@media (max-width: 720px) { .boss-hud { bottom: 60px; } }

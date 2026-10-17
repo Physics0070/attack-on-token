@@ -1,0 +1,30 @@
+.toasts { position: fixed; z-index: 90; right: var(--gutter); bottom: 86px; display: flex; flex-direction: column; gap: 10px; width: min(340px, calc(100vw - 2 * var(--gutter))); pointer-events: none; }
+.toast { pointer-events: auto; padding: 12px 14px; background: rgba(11,9,7,.92); border: 1px solid var(--line); border-left: 3px solid var(--brass); display: flex; flex-direction: column; gap: 3px; animation: toast-in .45s var(--ease); font-size: 12px; }
+.toast b { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.05; color: var(--bone); }
+.toast-k { font-size: 10px; letter-spacing: .16em; color: var(--brass); }
+.toast-b { color: var(--bone2); }
+.t-system { border-left-color: var(--acid); } .t-system .toast-k { color: var(--acid); }
+.t-error { border-left-color: var(--verm); } .t-error .toast-k { color: var(--verm); }
+.t-win { border-left-color: var(--bone); }
+@keyframes toast-in { from { transform: translateX(40px); opacity: 0 } to { transform: none; opacity: 1 } }
+
+.memes { position: fixed; inset: 0; z-index: 95; pointer-events: none; display: grid; place-items: center; overflow: hidden; }
+.meme { grid-area: 1/1; display: flex; flex-direction: column; align-items: center; gap: 6px; transform: translate(var(--x), var(--y)) rotate(var(--r)); animation: meme-pop 1.5s var(--ease) forwards; filter: contrast(1.5) saturate(1.8); text-shadow: 0 0 0 #000; }
+.meme-g { font-size: clamp(90px, 18vw, 220px); line-height: 1; filter: drop-shadow(0 8px 0 rgba(0,0,0,.6)); }
+.meme-t { font-family: var(--display); font-style: italic; font-size: clamp(40px, 9vw, 120px); line-height: .9; color: #fff; -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-transform: none; text-align: center; padding: 0 12px; }
+.m-text .meme-t { font-family: var(--mono); font-weight: 700; font-style: normal; font-size: clamp(30px, 6vw, 80px); text-transform: uppercase; letter-spacing: -.02em; }
+.m-huge .meme-t { font-size: clamp(160px, 34vw, 420px); font-style: normal; color: var(--verm); }
+.meme.bad .meme-t { color: var(--verm); }
+@keyframes meme-pop { 0% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(.2) } 12% { opacity: 1; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.25) } 22% { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1) } 80% { opacity: 1 } 100% { opacity: 0; transform: translate(var(--x), calc(var(--y) - 6vh)) rotate(var(--r)) scale(1.05) } }
+
+.subtitle { position: fixed; z-index: 92; left: 50%; bottom: 28px; transform: translateX(-50%); max-width: min(760px, 92vw); padding: 10px 16px; background: rgba(11,9,7,.88); border: 1px solid var(--line); font-size: 14px; text-align: center; pointer-events: none; animation: sub-in .25s var(--ease); }
+.subtitle span { display: block; font-size: 10px; letter-spacing: .18em; color: var(--verm); margin-bottom: 2px; }
+@keyframes sub-in { from { opacity: 0; transform: translate(-50%, 8px) } to { opacity: 1; transform: translate(-50%, 0) } }
+
+.flash { position: fixed; inset: 0; z-index: 99; pointer-events: none; opacity: .85; }
+
+@media (max-width: 720px) {
+  .toasts { bottom: 74px; right: 12px; }
+  .subtitle { bottom: 14px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .meme { animation-duration: 1.2s; } }

@@ -1,0 +1,123 @@
+.sa { max-width: 1000px; margin: 0 auto; }
+.sa .h-mid em { color: var(--verm); }
+.sa-lead { margin: 10px 0 20px; }
+
+/* ----- Arlo + offer sheet ----- */
+.sa-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px; margin-bottom: 22px; }
+.sa-arlo { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
+.sa-face { width: 92px; height: 92px; flex: none; border: 1px solid var(--line); background: var(--ink2); }
+.sa-face * { fill: none; stroke: var(--bone); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sa-face .sa-skull { fill: var(--ink3); }
+.sa-face .sa-eye, .sa-face .sa-tongue { fill: var(--bone); stroke: none; }
+.sa-face .sa-tongue { fill: var(--verm); }
+.sa-face .sa-eye-big { fill: var(--bone); }
+.sa-face .sa-eye-big + .sa-eye, .sa-face .sa-eye-big ~ .sa-eye { fill: var(--ink); }
+.sa-face .sa-mouth-o { fill: var(--ink); }
+.sa-face .sa-drop { fill: var(--bone2); stroke: none; }
+.sa-face .sa-hair { stroke: var(--brass); stroke-width: 3; }
+.sa-face .sa-collar { stroke: var(--bone2); }
+.sa-head { transform-origin: 50% 90%; transition: transform 0.4s var(--ease); }
+.sa-face.m-thinking .sa-head { transform: rotate(-4deg); }
+.sa-face.m-panic .sa-head { animation: sa-shiver 0.12s linear infinite; }
+.sa-face.m-sweat .sa-head { animation: sa-shiver 0.3s linear infinite; }
+.sa-face.m-faint .sa-head { transform: rotate(78deg) translate(0, 14px); transition: transform 0.55s cubic-bezier(0.5, 0, 0.9, 0.6); }
+.sa-face.m-sad .sa-head { transform: translateY(3px); }
+@keyframes sa-shiver { 50% { transform: translate(1.2px, -1px); } }
+
+.sa-bubble { position: relative; flex: 1; min-width: 0; min-height: 58px; border: 1px solid var(--bone2); padding: 12px 14px; font-size: 13px; line-height: 1.5; animation: sa-pop 0.3s var(--ease); display: flex; align-items: center; }
+.sa-bubble::before { content: ''; position: absolute; left: -7px; top: 22px; width: 12px; height: 12px; background: var(--ink); border-left: 1px solid var(--bone2); border-bottom: 1px solid var(--bone2); transform: rotate(45deg); }
+@keyframes sa-pop { from { opacity: 0; transform: translateY(6px); } }
+.sa-dots { display: inline-flex; gap: 5px; }
+.sa-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--bone); display: block; animation: sa-dot 0.9s infinite; }
+.sa-dots i:nth-child(2) { animation-delay: 0.15s; } .sa-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes sa-dot { 0%, 100% { opacity: 0.2; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-4px); } }
+
+.sa-offer { border: 1px solid var(--line); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.sa-offer ul { list-style: none; display: flex; flex-direction: column; font-size: 12px; }
+.sa-offer li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border-bottom: 1px dotted var(--line); }
+.sa-offer li span { min-width: 0; color: var(--bone2); }
+.sa-offer li b { font-weight: 400; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sa-offer li.cash span { color: var(--bone); }
+.sa-offer li.cash b { color: var(--verm); }
+.sa-offer li.in { animation: sa-line 0.35s var(--ease); }
+@keyframes sa-line { from { opacity: 0; transform: translateX(-8px); } }
+.sa-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 4px; gap: 12px; }
+.sa-total b { font-family: var(--display); font-weight: 400; font-size: 1.8rem; line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* ----- the board ----- */
+.sa-board { border-top: 1px solid var(--line); padding-top: 18px; }
+.sa-numrow { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.sa-num { font-family: var(--display); font-size: clamp(3.4rem, 10vw, 7.4rem); line-height: 1; letter-spacing: -0.03em; margin: 6px 0 20px; font-variant-numeric: tabular-nums; }
+.sa-num small { font-family: var(--mono); font-size: 0.16em; letter-spacing: 0.14em; color: var(--bone2); margin-left: 12px; text-transform: uppercase; }
+.sa-num.neg { color: var(--verm); }
+.sa-track { position: relative; height: 54px; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.sa-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--bone2); }
+.sa-track::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 13px; transform: translateY(-50%); background: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 5%); }
+.sa-fill { position: absolute; left: 0; top: 50%; height: 3px; margin-top: -1px; background: var(--bone); width: 0; z-index: 1; }
+.sa-track.neg .sa-fill { background: var(--verm); }
+.sa-band { position: absolute; top: 50%; height: 0; border-top: 1px dashed var(--verm); opacity: 0; z-index: 1; pointer-events: none; }
+.sa-m { position: absolute; left: calc(94.1% - 0.5px); top: 14px; width: 1px; height: 26px; background: var(--brass); opacity: 0.55; z-index: 1; }
+.sa-handle { position: absolute; top: 50%; left: 0; width: 26px; height: 40px; margin: -20px 0 0 -13px; background: var(--verm); border: 2px solid var(--bone); z-index: 2; box-shadow: 4px 6px 0 rgba(0, 0, 0, 0.4); }
+.sa-handle::after { content: ''; position: absolute; inset: 9px 7px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.sa-track:active .sa-handle { cursor: grabbing; }
+.sa-scale { display: flex; justify-content: space-between; margin-top: 6px; }
+.sa-kb { margin-top: 10px; opacity: 0.6; font-size: 10px; }
+.sa.st2 .sa-handle { animation: sa-twitch 2.4s infinite; }
+@keyframes sa-twitch { 0%, 92%, 100% { translate: 0 0; } 94% { translate: 0 -5px; } 96% { translate: 0 3px; } }
+
+/* ----- controls ----- */
+.sa-zone { position: relative; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; min-height: 128px; margin-top: 14px; padding: 6px; border: 1px dashed var(--line); }
+.sa-accept { --ox: 0px; --oy: 0px; --sc: 1; transform: translate(var(--ox), var(--oy)) scale(var(--sc)); transition: transform 0.14s var(--ease), background 0.18s var(--ease); position: relative; z-index: 3; transform-origin: center; }
+.sa-accept.tired { background: var(--bone); border-color: var(--bone); animation: sa-pant 0.5s ease-in-out infinite; }
+@keyframes sa-pant { 50% { transform: scale(0.96); } }
+.sa-counter { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sa-counter input, .sa-field input { background: var(--ink2); border: 1px solid var(--bone2); padding: 11px 12px; min-height: 44px; width: 180px; max-width: 100%; letter-spacing: 0.04em; }
+.sa-counter input:focus, .sa-field input:focus { outline: 2px solid var(--acid); }
+
+/* ----- outcomes ----- */
+.sa-res { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; animation: sa-pop 0.5s var(--ease); }
+.sa-rec { list-style: none; width: 100%; max-width: 440px; font-size: 12.5px; }
+.sa-rec li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px dotted var(--line); }
+.sa-rec b { font-weight: 400; }
+.sa-follow { border: 1px solid var(--verm); padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; }
+.sa-follow b { font-family: var(--display); font-weight: 400; font-size: 1.9rem; line-height: 1.1; color: var(--verm); transition: all 0.4s var(--ease); }
+.sa-mil b { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; letter-spacing: -0.02em; display: block; animation: sa-count 1.6s var(--ease); }
+@keyframes sa-count { from { opacity: 0; transform: translateY(24px) scale(0.8); } }
+.sa-faint .stamp { color: var(--brass); border-color: var(--brass); }
+
+.sa-pay { border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 14px; animation: sa-pop 0.4s var(--ease); }
+.sa-warn { background: var(--verm); color: var(--ink); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; padding: 9px 12px; text-transform: uppercase; }
+.sa-pay-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); gap: 20px; align-items: start; }
+.sa-pay-grid > div { display: flex; flex-direction: column; gap: 4px; }
+.sa-pay-grid b { font-family: var(--display); font-weight: 400; font-size: 2.4rem; line-height: 1; }
+.sa-field { display: flex; flex-direction: column; gap: 6px; }
+.sa-field input { width: 100%; letter-spacing: 0.12em; font-weight: 700; }
+.sa-pay-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ----- the badge printer ----- */
+.sa-printer { position: relative; width: 100%; max-width: 300px; padding-top: 12px; }
+.sa-slot { height: 10px; background: #000; border: 1px solid var(--bone2); position: relative; z-index: 2; }
+.sa-badge-clip { overflow: hidden; margin: -1px 12px 0; height: 400px; }
+.sa-badge { background: var(--bone); color: var(--ink); padding: 18px 16px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; animation: sa-print 2.6s steps(26, end) forwards; transform: translateY(-100%); }
+@keyframes sa-print { to { transform: translateY(0); } }
+.sa-badge .label { color: #5a5446; letter-spacing: 0.2em; }
+.sa-lanyard { width: 34px; height: 8px; border: 2px solid var(--ink); border-radius: 4px; background: var(--ink3); }
+.sa-photo { width: 92px; height: 92px; border: 1px solid var(--ink); display: grid; place-items: center; background: #cfc6b0; }
+.sa-photo svg { width: 70%; fill: var(--ink); opacity: 0.8; }
+.sa-eno { font-family: var(--display); font-weight: 400; font-size: 2.2rem; line-height: 1; letter-spacing: -0.01em; }
+.sa-unpaid { margin: -2px 0 2px; }
+.sa-bl { list-style: none; font-size: 11px; width: 100%; text-align: center; color: #3b3629; }
+.sa-bars { width: 100%; height: 28px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 9px); }
+.sa-welcome { max-width: 52ch; }
+
+@media (max-width: 720px) {
+  .sa-top { grid-template-columns: 1fr; }
+  .sa-pay-grid { grid-template-columns: 1fr; }
+  .sa-handle { width: 32px; height: 44px; margin: -22px 0 0 -16px; }
+  .sa-zone { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sa-bubble, .sa-offer li.in, .sa-res, .sa-pay, .sa-mil b, .sa-dots i, .sa.st2 .sa-handle, .sa-accept.tired, .sa-face .sa-head { animation: none; }
+  .sa-badge { animation-duration: 0.01s; }
+  .sa-face.m-faint .sa-head { transition-duration: 0.01s; }
+}

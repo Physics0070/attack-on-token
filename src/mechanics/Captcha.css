@@ -1,0 +1,139 @@
+.cap { max-width: 1000px; margin: 0 auto; }
+.cap-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.cap .h-mid { margin-bottom: 10px; }
+.cap .h-mid em { color: var(--verm); }
+.cap .lead { margin-bottom: 22px; }
+
+/* ---------------- humanness meter ---------------- */
+.cap-meter { border: 1px solid var(--line); background: var(--ink2); padding: 12px 16px 14px; margin-bottom: 18px; display: grid; gap: 8px; }
+.cap-meter-head { display: flex; align-items: baseline; gap: 12px; }
+.cap-meter-n { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.cap-meter-n small { font-size: 0.5em; color: var(--bone2); }
+.cap-delta { font-weight: 700; font-size: 13px; animation: cap-pop 1.6s var(--ease) both; }
+.cap-delta.up { color: var(--brass); }
+.cap-delta.down { color: var(--verm); }
+.cap-track { position: relative; height: 18px; border: 1px solid var(--line); margin: 8px 0 0; }
+.cap-track .z { position: absolute; top: 0; bottom: 0; opacity: 0.2; }
+.cap-track .z1 { left: 0; width: 20%; background: var(--verm); }
+.cap-track .z2 { left: 20%; width: 40%; background: var(--bone2); }
+.cap-track .z3 { left: 60%; width: 40%; background: var(--brass); }
+.cap-track u { position: absolute; bottom: 0; width: 1px; height: 6px; background: var(--bone2); text-decoration: none; }
+.cap-needle { position: absolute; top: -9px; bottom: -9px; width: 0; transition: left 1s cubic-bezier(0.3, 1.9, 0.4, 1); }
+.cap-needle em { position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--bone); animation: cap-wobble 0.25s steps(2) infinite; }
+.cap-needle::before { content: ''; position: absolute; left: -5px; top: -4px; border: 5px solid transparent; border-top: 7px solid var(--verm); border-bottom: 0; }
+.cap-zones { display: flex; justify-content: space-between; font-size: 9.5px; letter-spacing: 0.18em; color: var(--bone2); }
+.cap-zones span:nth-child(1) { width: 20%; }
+.cap-zones span:nth-child(2) { width: 40%; text-align: left; }
+.cap-zones span:nth-child(3) { width: 25%; }
+.cap-zones span:nth-child(4) { width: 15%; text-align: right; }
+.cap-pips { display: flex; gap: 6px; }
+.cap-pips i { width: 22px; height: 6px; border: 1px solid var(--line); display: block; transition: background 0.3s; }
+.cap-pips i.cur { border-color: var(--bone); }
+.cap-pips i.pass { background: var(--brass); border-color: var(--brass); }
+.cap-pips i.fail { background: var(--verm); border-color: var(--verm); }
+
+/* ---------------- gate card ---------------- */
+.cap-card { border: 1px solid var(--bone); background: var(--ink); max-width: 560px; margin: 0 auto; box-shadow: 10px 10px 0 rgba(236, 228, 210, 0.07); }
+.cap-band { background: var(--verm); color: var(--ink); padding: 14px 18px; display: grid; gap: 2px; }
+.cap-band span { font-size: 12px; letter-spacing: 0.04em; }
+.cap-band h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 4.4vw, 2.6rem); line-height: 1; text-transform: capitalize; letter-spacing: -0.01em; }
+.cap-band small { font-size: 11px; opacity: 0.8; }
+.cap-body { padding: 14px 16px 16px; display: grid; gap: 12px; }
+.cap-foot { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.cap-foot .label:last-child { margin-left: auto; font-size: 10px; }
+.cap-logo { font-size: 22px; color: var(--verm); line-height: 1; }
+
+.cap-round { display: grid; gap: 12px; }
+.cap-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.cap-note { font-size: 12.5px; min-height: 2.6em; }
+
+/* tiles */
+.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.cap-tile { position: relative; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); padding: 0; background: #1b1713; display: block; transition: border-color 0.15s; }
+.cap-tile svg { width: 100%; height: 100%; display: block; transition: transform 0.18s var(--ease); }
+.cap-tile:hover { border-color: var(--bone2); }
+.cap-tile.sel svg { transform: scale(0.8); }
+.cap-tile.sel { border-color: var(--bone); }
+.cap-tick { position: absolute; top: 5px; left: 5px; width: 22px; height: 22px; display: grid; place-items: center; background: var(--bone); color: var(--ink); font-weight: 700; font-size: 14px; transform: scale(0); transition: transform 0.18s var(--ease); }
+.cap-tile.sel .cap-tick { transform: scale(1); }
+.cap-read { position: absolute; left: 0; right: 0; bottom: 14%; text-align: center; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; padding: 3px 0; animation: cap-slam 0.3s var(--ease) both; }
+.cap-read.ego { background: var(--brass); color: var(--ink); }
+.cap-read.not { background: var(--verm); color: var(--ink); }
+.cap-tile.ego.ego { border-color: var(--brass); }
+.cap-tile.ego.not { border-color: var(--verm); }
+.cap-crit { display: grid; gap: 2px; padding: 8px 12px; border: 1px dashed var(--bone2); animation: cap-pop-in 0.35s var(--ease) both; }
+.cap-crit b { font-family: var(--display); font-weight: 400; font-size: 1.5rem; line-height: 1.05; color: var(--brass); }
+
+/* round 3 */
+.cap-robot { display: flex; gap: 10px; flex-wrap: wrap; }
+.cap-robot .btn { flex: 1 1 110px; justify-content: center; }
+.cap-defs { list-style: none; display: grid; gap: 6px; }
+.cap-defs li { font-size: 12.5px; border-left: 2px solid var(--brass); padding-left: 10px; animation: cap-pop-in 0.35s var(--ease) both; }
+.cap-recycle { display: grid; gap: 6px; }
+.cap-recycle > div { height: 10px; border: 1px solid var(--verm); }
+.cap-recycle i { display: block; height: 100%; background: var(--verm); }
+
+/* round 4 / 6 */
+.cap-text { width: 100%; resize: vertical; background: var(--ink2); color: var(--bone); border: 1px solid var(--line); padding: 10px 12px; font-size: 14px; line-height: 1.5; min-height: 70px; }
+.cap-text:focus { border-color: var(--bone); outline: none; }
+.cap-judge { border-left: 3px solid var(--verm); padding: 4px 0 4px 12px; display: grid; gap: 4px; min-height: 5em; }
+.cap-judge p { font-family: var(--display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.1; }
+.cap-counters { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11.5px; color: var(--bone2); }
+.cap-counters b { color: var(--bone); font-variant-numeric: tabular-nums; }
+.cap-arlometer, .cap-feel { display: grid; grid-template-columns: auto 1fr 44px; gap: 10px; align-items: center; }
+.cap-arlometer > div, .cap-feel > div { height: 8px; border: 1px solid var(--line); }
+.cap-arlometer i { display: block; height: 100%; background: var(--verm); }
+.cap-feel i { display: block; height: 100%; background: var(--brass); transition: width 0.3s; }
+.cap-arlometer b, .cap-feel b { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* round 5 */
+.cap-hold-wrap { grid-template-columns: auto 1fr; align-items: center; gap: 18px; }
+.cap-hold { position: relative; width: 150px; height: 150px; display: grid; place-items: center; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; border-radius: 50%; transition: transform 0.15s var(--ease); }
+.cap-hold.on { transform: scale(0.96); }
+.cap-hold svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cap-hold .ring-bg { fill: none; stroke: var(--line); stroke-width: 6; }
+.cap-hold .ring { fill: none; stroke: var(--verm); stroke-width: 6; stroke-linecap: butt; transition: stroke 0.2s; }
+.cap-hold .ring.warm { stroke: var(--brass); }
+.cap-hold-txt { position: relative; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-align: center; line-height: 1.3; }
+.cap-hold-info { display: grid; gap: 10px; }
+.cap-hold-msg { font-family: var(--display); font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.1; min-height: 2.3em; }
+
+/* results */
+.cap-res { display: grid; gap: 8px; justify-items: start; border-top: 1px solid var(--line); padding-top: 12px; animation: cap-pop-in 0.4s var(--ease) both; }
+.cap-res-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cap-res.pass .stamp { color: var(--brass); border-color: var(--brass); }
+.cap-chip { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.cap-chip.up { color: var(--brass); }
+.cap-chip.down { color: var(--verm); }
+.cap-res-msg { font-family: var(--display); font-style: italic; font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.08; }
+
+/* certificate */
+.cap-cert { display: grid; gap: 18px; justify-items: center; animation: cap-pop-in 0.6s var(--ease) both; }
+.cap-cert-in {
+  position: relative; background: var(--bone); color: var(--ink); width: 100%; max-width: 640px; padding: clamp(18px, 4vw, 36px); text-align: center; display: grid; gap: 8px; justify-items: center;
+  outline: 1px solid var(--brass); outline-offset: -10px; border: 1px solid var(--ink);
+}
+.cap-cert-in .label { color: #6b6354; }
+.cap-cert-pre { font-size: 12px; max-width: 40ch; color: #3a342c; }
+.cap-cert-n { font-family: var(--display); font-weight: 400; font-size: clamp(4rem, 14vw, 7rem); line-height: 0.9; letter-spacing: -0.03em; color: var(--verm); }
+.cap-cert-t { font-family: var(--display); font-weight: 400; font-style: italic; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1; }
+.cap-cert-c { font-size: 13px; max-width: 44ch; }
+.cap-cert-marks { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; font-size: 11px; margin-top: 6px; }
+.cap-cert-marks .pass { color: #4a5a1e; }
+.cap-cert-marks .fail { color: #a8301a; }
+.cap-cert-in .stamp { font-size: 14px; margin-top: 6px; background: transparent; }
+
+@keyframes cap-wobble { 0% { transform: translateX(0); } 100% { transform: translateX(1.5px); } }
+@keyframes cap-pop { 0% { opacity: 0; transform: translateY(8px) scale(0.8); } 15% { opacity: 1; transform: none; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-6px); } }
+@keyframes cap-pop-in { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: none; } }
+@keyframes cap-slam { 0% { opacity: 0; transform: scale(1.8); } 100% { opacity: 1; transform: none; } }
+
+@media (max-width: 520px) {
+  .cap-hold-wrap { grid-template-columns: 1fr; justify-items: center; }
+  .cap-hold { width: 132px; height: 132px; }
+  .cap-hold-info { width: 100%; }
+  .cap-zones { font-size: 8.5px; letter-spacing: 0.1em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cap, .cap * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

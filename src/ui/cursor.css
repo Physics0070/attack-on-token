@@ -1,0 +1,9 @@
+.cur-dot, .cur-ring { position: fixed; left: 0; top: 0; z-index: 200; pointer-events: none; mix-blend-mode: difference; }
+.cur-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff; border-radius: 50%; }
+.cur-ring { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+.cur-ring::before { content: ''; position: absolute; inset: 0; border: 1px solid #fff; border-radius: 50%; transition: transform .25s var(--ease), border-radius .25s var(--ease); }
+.cur-ring[data-mode='link']::before { transform: scale(1.6); }
+.cur-ring[data-mode='strike']::before { border-radius: 0; transform: rotate(45deg) scale(1.1); }
+.cur-ring.down::before { transform: scale(.7); }
+.cur-ring span { position: absolute; left: 44px; top: 8px; font-size: 10px; letter-spacing: .14em; color: #fff; white-space: nowrap; text-transform: uppercase; }
+@media (hover: none), (pointer: coarse) { .cur-dot, .cur-ring { display: none; } }

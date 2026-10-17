@@ -1,0 +1,56 @@
+/* Ragebait engine styling (ported feature set). Self-contained; only touches its own nodes + temporary body classes. */
+:root { --cx-h: 12; }
+#cur { position: fixed; left: 0; top: 0; z-index: 210; pointer-events: none; font-size: 26px; line-height: 1; margin: -4px 0 0 18px; transition: scale .2s, opacity .2s; }
+#cur.big { scale: 3; } #cur.off { opacity: 0; }
+@media (hover: none), (pointer: coarse) { #cur, .cx-trail { display: none; } }
+.cx-trail { position: fixed; z-index: 205; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: hsl(var(--cx-h) 90% 55% / .7); pointer-events: none; animation: cxfade .7s forwards; }
+@keyframes cxfade { to { opacity: 0; scale: .2; } }
+.cx-ghost { position: fixed; z-index: 209; left: 0; top: 0; pointer-events: none; font-size: 22px; transition: transform .5s; }
+.cx-eye { position: fixed; z-index: 86; width: 34px; height: 34px; border-radius: 50%; background: #fff; display: grid; place-items: center; pointer-events: none; }
+.cx-eye i { width: 14px; height: 14px; border-radius: 50%; background: #000; }
+.cx-dlg { position: fixed; left: 50%; top: 50%; translate: -50% -50%; z-index: 600; width: min(360px, 90vw); animation: cxin .3s steps(4); pointer-events: auto; }
+.cx-dlg .win-body p { font-size: 13px; line-height: 1.4; }
+.cx-row { display: flex; gap: 8px; justify-content: center; padding: 0 12px 12px; }
+@keyframes cxin { from { scale: .6; opacity: 0; } }
+.cx-shake, .cx-glitch { animation: cxwig .15s infinite; }
+.cx-glitch { animation: cxgl .4s steps(2) 3; }
+@keyframes cxwig { 50% { translate: 3px -2px; } }
+@keyframes cxgl { 25% { translate: -6px 2px; filter: hue-rotate(90deg); } 75% { translate: 6px -2px; filter: hue-rotate(-90deg); } }
+.cx-spin { animation: cxspin .45s linear 2; } @keyframes cxspin { to { rotate: 360deg; } }
+.cx-load > * { opacity: .15; } .cx-load { position: relative; } .cx-load::after { content: 'Loading…'; position: absolute; inset: 0; display: grid; place-items: center; color: var(--bone); pointer-events: none; }
+.cx-feat { position: relative; outline: 1px solid var(--brass); } .cx-feat::after { content: '★ Featured'; position: absolute; top: 8px; right: 10px; font-size: 10px; color: var(--brass); pointer-events: none; }
+.btn[data-cx] { color: transparent !important; position: relative; } .btn[data-cx]::after { content: attr(data-cx); position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); background: var(--acid); }
+.cx-conf { position: fixed; z-index: 900; top: -30px; font-size: 28px; transition: transform 2s ease-in; pointer-events: none; }
+.cx-cat { position: fixed; top: 60vh; right: -60px; font-size: 40px; z-index: 70; transition: right 9s linear; pointer-events: auto; }
+.cx-bug { position: fixed; z-index: 70; font-size: 18px; transition: all .3s; pointer-events: auto; }
+.cx-dvd { position: fixed; left: 0; top: 0; z-index: 70; font-weight: 900; padding: .3rem .8rem; background: var(--verm); color: #000; pointer-events: none; }
+.cx-duck { position: fixed; bottom: 4px; left: -60px; font-size: 34px; z-index: 60; pointer-events: auto; cursor: pointer; }
+#cx-mx, #cx-boot, #cx-term { position: fixed; inset: 0; z-index: 800; background: #000; color: #3f6; font: 14px monospace; padding: 1rem; overflow: auto; white-space: pre-wrap; }
+#cx-mx { padding: 0; pointer-events: none; background: #000c; }
+#cx-term input { background: none; border: 0; color: #3f6; font: inherit; width: 90%; margin: 0; padding: 0; outline: 0; cursor: text; }
+#cx-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 120; pointer-events: none; } #cx-bar i { display: block; height: 100%; background: var(--verm); }
+#cx-crumb { position: fixed; left: var(--gutter); top: 62px; z-index: 70; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone2); pointer-events: none; }
+.cx-top { position: fixed; right: 20px; bottom: 90px; z-index: 84; width: 44px; height: 44px; display: none; place-items: center; border: 1px solid var(--bone); background: var(--ink); color: var(--bone); transition: right .25s, bottom .25s; font-size: 18px; }
+body.cx-navgone .hud-nav, body.cx-navgone .hud-right { opacity: 0; transition: opacity .3s; }
+#cx-dock { position: fixed; left: var(--gutter); bottom: 14px; z-index: 84; display: flex; gap: 6px; }
+#cx-dock button { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; min-height: 32px; border: 1px solid var(--line); background: rgba(11,9,7,.7); color: var(--bone2); }
+#cx-dock button:hover { background: var(--bone); color: var(--ink); }
+#cx-modal { position: fixed; inset: 0; z-index: 700; background: rgba(0,0,0,.6); display: grid; place-items: center; }
+.cx-box { position: relative; background: var(--ink2); border: 1px solid var(--verm); padding: 2rem 3rem; text-align: center; animation: cxin .3s; } .cx-box.out { animation: cxspin .6s forwards; }
+.cx-box h3 { font-family: var(--display); font-size: 64px; font-weight: 400; }
+.cx-mx { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border: 1px solid var(--line); color: var(--bone); }
+#cx-bsod, #cx-update { position: fixed; inset: 0; z-index: 850; background: #0a54c4; color: #fff; font: 700 4rem/1.2 'Segoe UI', sans-serif; padding: 10vh 8vw; cursor: pointer; } #cx-bsod small, #cx-update small { font-size: 1.1rem; font-weight: 400; }
+#cx-update { font-size: 2.4rem; background: #0a54c4; }
+body.xp .scroller, body.xp .hud { font-family: Tahoma, sans-serif; } body.xp .panel { background: #3a6ea5; border-radius: 8px; }
+body.crt::after { content: ''; position: fixed; inset: 0; z-index: 210; pointer-events: none; background: repeating-linear-gradient(#0003 0 2px, transparent 2px 4px); }
+body.disco .stage, body.disco .scroller { animation: cxdsc 1.2s linear infinite; } @keyframes cxdsc { to { filter: hue-rotate(360deg); } }
+body.potato .stage { filter: grayscale(1) contrast(1.6); } body.potato .stage canvas { image-rendering: pixelated; }
+@media (prefers-reduced-motion: reduce) { .cx-shake, .cx-glitch, .cx-spin { animation: none; } }
+@media (max-width: 720px) { #cx-dock { bottom: 64px; } #cx-crumb { top: 100px; } }
+
+#cx-conn, #cx-still { position: fixed; inset: 0; z-index: 820; display: grid; place-items: center; background: rgba(0,0,0,.75); color: #fff; text-align: center; font: 700 2rem var(--mono); }
+#cx-conn small { font-size: .9rem; font-weight: 400; } #cx-still { background: rgba(0,0,0,.55); } #cx-still .win { width: min(360px, 90vw); }
+body.cx-flip .scroller { transform: rotate(180deg); transition: transform .5s; }
+body.cx-comic .scroller, body.cx-comic .hud { font-family: 'Comic Sans MS', 'Comic Neue', cursive !important; } body.cx-comic .h-display, body.cx-comic .h-mid, body.cx-comic .hero-name { font-family: 'Comic Sans MS', cursive !important; }
+body.cx-zoom .scroller { zoom: 1.25; transition: zoom .6s; }
+body.cx-nosel * { user-select: none !important; }

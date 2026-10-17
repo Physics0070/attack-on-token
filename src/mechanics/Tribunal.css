@@ -1,0 +1,121 @@
+.tri { max-width: 1000px; margin: 0 auto; }
+.tri-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.tri .h-mid { margin-bottom: 10px; }
+.tri .h-mid em { color: var(--verm); }
+.tri .lead { margin-bottom: 22px; }
+
+/* ---------------- scoreboard ---------------- */
+.tri-score { display: grid; grid-template-columns: 140px auto 1fr; gap: 20px; align-items: center; border: 1px solid var(--line); padding: 10px 16px; margin-bottom: 18px; background: var(--ink2); }
+.tri-scales svg { width: 140px; height: 70px; display: block; overflow: visible; }
+.tri-scales .sc-post { stroke: var(--bone2); stroke-width: 2; }
+.tri-scales .sc-beam { stroke: var(--brass); stroke-width: 3; }
+.tri-scales .sc-str { stroke: var(--bone2); stroke-width: 1; }
+.tri-scales .sc-pan { fill: var(--brass); }
+.tri-justice { display: grid; gap: 0; min-width: 130px; }
+.tri-justice b { font-family: var(--display); font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; font-weight: 400; font-variant-numeric: tabular-nums; }
+.tri-jlabel { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass); }
+.tri-pips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.tri-pips i { width: 20px; height: 20px; border: 1px solid var(--line); display: block; transition: background 0.3s, transform 0.3s; }
+.tri-pips i.cur { border-color: var(--bone); transform: translateY(-2px); }
+.tri-pips i.convict { background: var(--verm); border-color: var(--verm); }
+.tri-pips i.acquit { background: var(--brass); border-color: var(--brass); }
+.tri-pips i.demo { background: var(--bone); border-color: var(--bone); }
+.tri-pips .label { flex-basis: 100%; text-align: right; font-size: 10px; }
+
+/* ---------------- case ---------------- */
+.tri-case { display: grid; gap: 16px; animation: tri-in 0.5s var(--ease) both; }
+.tri-claim { position: relative; display: grid; gap: 6px; border-left: 3px solid var(--verm); padding: 4px 0 4px 16px; }
+.tri-claim-text { font-family: var(--display); font-weight: 400; font-size: clamp(1.9rem, 4.4vw, 3.4rem); line-height: 1; letter-spacing: -0.015em; }
+.tri-claim-sub { font-size: 12px; }
+.tri-claim .stamp { position: absolute; right: 0; top: 4px; font-size: clamp(14px, 2.4vw, 22px); padding: 4px 12px; background: rgba(11, 9, 7, 0.85); }
+.tri .stamp.good { color: var(--brass); border-color: var(--brass); }
+.tri .stamp.neutral { color: var(--bone); border-color: var(--bone); }
+.tri-slam { animation: tri-slam 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+
+.tri-exhibit, .tri-demo { border: 1px solid var(--line); background: var(--ink2); padding: 12px; display: grid; gap: 10px; }
+.tri-ex-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tri-examine { min-height: 36px; padding: 8px 14px; }
+.tri-poly { width: 100%; height: 100px; background: #100d0a; border: 1px solid var(--line); display: block; }
+.tri-grid { stroke: rgba(236, 228, 210, 0.08); stroke-width: 0.5; }
+.tri-trace { stroke: var(--acid); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.tri-pen { fill: var(--verm); }
+.tri-ex-list { list-style: none; display: grid; gap: 6px; min-height: 3em; }
+.tri-ex-list li { font-size: 12.5px; border-left: 2px solid var(--verm); padding-left: 10px; animation: tri-in 0.4s var(--ease) both; }
+.tri-ex-list li.true { border-color: var(--brass); }
+.tri-ex-list li.dim { border-color: var(--line); }
+.tri-reading { display: flex; align-items: baseline; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; animation: tri-in 0.4s var(--ease) both; }
+.tri-reading b { font-family: var(--display); font-size: 2.4rem; font-weight: 400; line-height: 1; color: var(--verm); font-variant-numeric: tabular-nums; }
+.tri-reading.true b { color: var(--brass); }
+.tri-oh { font-size: 11px; color: var(--bone2); font-style: italic; }
+
+.tri-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.tri-actions .btn { flex: 1 1 150px; justify-content: center; }
+
+/* demo */
+.tri-log { list-style: none; display: grid; gap: 6px; min-height: 8em; max-height: 280px; overflow: auto; padding: 8px; background: #0d0b08; border: 1px solid var(--line); font-size: 12.5px; }
+.tri-log li { display: grid; grid-template-columns: 54px 1fr; gap: 10px; animation: tri-in 0.3s var(--ease) both; }
+.tri-log b { font-size: 10px; letter-spacing: 0.14em; padding-top: 2px; color: var(--bone2); }
+.tri-log .w-ARLO b { color: var(--verm); }
+.tri-log .w-JUDGE b { color: var(--brass); }
+.tri-log .w-SYS b { color: var(--acid); }
+.tri-log .w-SYS span { color: var(--acid); }
+.tri-log .w-MOM b { color: var(--bone); }
+.tri-comp { display: grid; grid-template-columns: auto 1fr 44px; gap: 10px; align-items: center; }
+.tri-comp-bar { height: 8px; border: 1px solid var(--line); }
+.tri-comp-bar i { display: block; height: 100%; transition: width 0.6s var(--ease), background 0.3s; }
+.tri-comp b { text-align: right; font-variant-numeric: tabular-nums; }
+
+.tri-prop { display: block; }
+.tri-prop.grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; }
+.tri-prop.grid i { aspect-ratio: 1; border: 1px solid var(--line); display: block; transition: background 0.3s; }
+.tri-prop.grid i.on { background: var(--brass); border-color: var(--brass); }
+.tri-prop.grid .label { grid-column: 1 / -1; margin-top: 4px; }
+.tri-prop.sheet { width: 100%; max-width: 360px; height: 130px; margin: 0 auto; }
+.tri-prop.sheet rect { fill: var(--bone); opacity: 0.9; stroke: var(--ink); }
+.tri-prop.sheet rect.done { fill: var(--brass); }
+.tri-prop.sheet .corner { fill: var(--verm); }
+.tri-prop.sheet text { font: 700 11px var(--mono); fill: var(--ink); letter-spacing: 0.2em; }
+.tri-prop.track { display: grid; gap: 6px; }
+.tri-track { position: relative; height: 22px; border: 1px solid var(--line); background: repeating-linear-gradient(90deg, transparent 0 24px, rgba(236, 228, 210, 0.1) 24px 25px); }
+.tri-track i { position: absolute; top: 3px; width: 14px; height: 14px; background: var(--verm); border-radius: 50%; transform: translateX(-100%); transition: left 1s var(--ease); }
+
+/* bench */
+.tri-bench { display: grid; gap: 10px; justify-items: start; border: 1px solid var(--line); padding: 14px 16px; background: var(--ink2); animation: tri-in 0.4s var(--ease) both; }
+.tri-bench.bad { border-left: 3px solid var(--verm); }
+.tri-bench.good { border-left: 3px solid var(--brass); }
+.tri-bench-text { font-family: var(--display); font-size: clamp(1.15rem, 2.1vw, 1.55rem); line-height: 1.18; min-height: 3.5em; }
+.tri-caret { display: inline-block; width: 8px; height: 1em; background: var(--bone); margin-left: 3px; vertical-align: -2px; animation: tri-blink 0.8s steps(2) infinite; }
+.tri-arlo { font-size: 12.5px; color: var(--bone2); font-style: italic; }
+.tri-arlo b { color: var(--verm); font-style: normal; letter-spacing: 0.1em; }
+
+/* sentence */
+.tri-sentence { display: grid; gap: 14px; justify-items: start; border: 1px solid var(--bone); padding: clamp(16px, 3vw, 32px); position: relative; animation: tri-in 0.6s var(--ease) both; }
+.tri-sentence .h-display { font-size: clamp(2.2rem, 6vw, 4.6rem); }
+.tri-sentence .stamp { font-size: 16px; padding: 4px 14px; }
+.tri-sentence.k-waste { border-color: var(--verm); }
+.tri-sentence.k-waste .h-display { color: var(--verm); }
+.tri-sentence.k-syco .stamp { color: var(--brass); border-color: var(--brass); }
+.tri-sent-body { max-width: 60ch; font-size: clamp(14px, 1.5vw, 16px); }
+.tri-tally { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); width: 100%; max-width: 520px; }
+.tri-tally > div { padding: 10px 12px; display: grid; border-right: 1px solid var(--line); }
+.tri-tally > div:last-child { border-right: 0; }
+.tri-tally b { font-family: var(--display); font-size: 2rem; font-weight: 400; line-height: 1; }
+
+@keyframes tri-in { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: none; } }
+@keyframes tri-slam { 0% { opacity: 0; transform: scale(3.2) rotate(-18deg); } 70% { opacity: 1; transform: scale(0.94) rotate(-6deg); } 100% { transform: scale(1) rotate(-6deg); opacity: 1; } }
+@keyframes tri-blink { 50% { opacity: 0; } }
+
+@media (max-width: 760px) {
+  .tri-score { grid-template-columns: auto 1fr; gap: 12px; }
+  .tri-scales svg { width: 100px; height: 50px; }
+  .tri-pips { grid-column: 1 / -1; justify-content: flex-start; }
+  .tri-pips .label { text-align: left; }
+  .tri-claim .stamp { position: static; justify-self: start; margin-top: 8px; }
+  .tri-prop.grid { grid-template-columns: repeat(10, 1fr); }
+  .tri-tally { grid-template-columns: repeat(2, 1fr); }
+  .tri-log li { grid-template-columns: 44px 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tri, .tri * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .tri-caret { animation: none; }
+}
