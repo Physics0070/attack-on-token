@@ -1,10 +1,12 @@
 # Attack on Token — ARLO PEMBERTON-VEX, Verified Legend™
 
+**Live:** https://attack-on-token.vercel.app · **Repo:** https://github.com/Physics0070/attack-on-token · **Build conversation:** [CONVERSATION.md](CONVERSATION.md)
+
 A cinematic WebGL profile page that slowly loses its mind. It opens like an award-winning portfolio from the future, then turns on Arlo, the visitor, and eventually itself.
 
 **Stack:** Vite · React 19 · TypeScript · three.js / React Three Fiber · zustand · GSAP. No API keys, no external assets, no network calls at runtime. Audio is generated in the browser (WebAudio + the built-in speech synthesis).
 
-## Run
+## Run locally (optional — the live link above needs nothing)
 ```bash
 npm install
 npm run dev        # http://localhost:5173
